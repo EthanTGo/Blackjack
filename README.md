@@ -7,3 +7,5 @@ Group Members:
 
 1. Ethan Timoteo Go
 2. Sean Chun
+
+Plan:
