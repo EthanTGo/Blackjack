@@ -1,5 +1,5 @@
 package specific;
 
-public class a {
-
+public class Cards {
+	String number = "one";
 }
