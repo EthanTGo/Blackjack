@@ -7,7 +7,7 @@ public class Dealer {
   private int score; // dealer's total card value
   private ArrayList<Cards> dhand; //dealerhands
 
-  public Dealer(Deck toBeTaken){
+  public Dealer(){
       score = 0;
       dhand = new ArrayList<Cards>();
     }

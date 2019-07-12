@@ -14,7 +14,8 @@ public class Exec {
 		System.out.println(a.toString());
 		Scanner scan = new Scanner(System.in);  
 		System.out.println(" What action do you want to do?: 0 for Hit, 1 for Stand, 2 for DoubleUp");
-		  int input = scan.nextInt();
+		  
+		int input = scan.nextInt();
 		  switch(input) {
 		  	case 0:
 			  System.out.println("0");

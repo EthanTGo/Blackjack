@@ -14,39 +14,41 @@ public class Players {
 	boolean still_playing; //whether the player did not fold
 	int amount_on_bet;
 	int score; //this is the score based on the hand that the players has
-	
+	boolean split; //this is only true if split
 	
 
   public Players(String name){
     this.name = name;
     this.balance = new Balance(0);
-    this.hand = new ArrayList<Cards>();
   }
 
   //Player should be able to: Hit, Stand, Split, Double up, Bet
   public void Play() {
+	  boolean valid_number = false;
+	  int input;
 	  Scanner scan = new Scanner(System.in);
 	  if(split) { //if the split is not possible
 		  System.out.println(this.name + " What action do you want to do?: 0 for Hit, 1 for Stand, 2 for DoubleUp, 3 for Split");
+		  while(!valid_number) {
+			  System.out.println("Enter a valid number");
+			  input = scan.nextInt();
+			  if(input >= 0 & input < 4) {
+				  valid_number = true;
+			  }
+		  }
+		  
 	  }
 	  else {
 		  System.out.println(this.name + " What action do you want to do?: 0 for Hit, 1 for Stand, 2 for DoubleUp");
-		  int input = scan.nextInt();
-		  switch(input) {
-		  	case 0:
-			  Hit();
-			  break;
-		  	case 1:
-		  	  Stand();
-		  	  break;
-		  	case 2:
-		  	  DoubleUp();
-			  break;
-			default:
-				System.out.println("Enter a correct value");
+		  while(!valid_number) {
+			  System.out.println("Enter a valid number");
+			  input = scan.nextInt();
+			  if(input >= 0 & input < 3) {
+				  valid_number = true;
+			  }
 		  }
-	  }  
-  }
+	 }
+}  
   
   
   
