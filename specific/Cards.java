@@ -18,7 +18,7 @@ public class Cards {
           }else if (i == 3){
             id = "Three";
           } else if (i==4){
-            id = "Four"
+            id = "Four";
           } else if (i ==5){
             id = "Five";
           } else if (i == 6){
@@ -45,5 +45,9 @@ public class Cards {
             id = "King";
           }
         }
+  }
+  
+  public int getValue() {
+	  return this.value;
   }
 }

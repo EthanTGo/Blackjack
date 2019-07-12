@@ -38,11 +38,16 @@ public class Players {
 	  this.amount_on_bet = 0; //you lose that bet
   }
   
-  public void DoubleUp() {
-	  
+  public void DoubleUp(Dealer dealer) {
+	  this.hand.add(dealer.get)
 	  this.amount_on_bet = this.amount_on_bet * 2;
   }
   
+  public void score() { //returns the score based on the hand value
+	  for(int i = 0; i < this.hand.size(); i++) {
+		  score += this.hand.get(i).getValue();
+	  }
+  }
 
 
 }
