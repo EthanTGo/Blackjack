@@ -10,14 +10,14 @@ public class BlackJack {
 	ArrayList<Players> num_player;
 	int round; //which round
 	int turn; //whose turn this is
-	
+
 	public BlackJack() {
 		this.default_deck = new Deck();
 		this.dealer = new Dealer();
 		this.num_player = new ArrayList<Players>();
 		this.round = 0;
 	}
-	
+
 	public void playGame() {
 		startGame();
 		this.turn = 0;
@@ -44,17 +44,17 @@ public class BlackJack {
 			nextValidTurn();
 		}
 	}
-	
-	
+
+
 	//Copied from the TicTacToe game :)
 	private Players createPlayers() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("enter your name: ");
-		String name = scan.nextLine();	
+		String name = scan.nextLine();
 		Players player = new Players(name);
 		return player;
 	}
-	
+
 	private void startGame() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("How many players are there: ");
@@ -64,14 +64,14 @@ public class BlackJack {
 			this.num_player.add(createPlayers());
 		}
 	}
-	
+
 	private void reset() { //a function that resets everything
 		this.default_deck = new Deck();
 		this.num_player = new ArrayList<Players>();
 		this.round = 0;
 		playGame();
 	}
-	
+
 	private void nextValidTurn() {
 		//find the next valid turn
 		if(turn + 1 > this.num_player.size()-1) {
@@ -85,28 +85,28 @@ public class BlackJack {
 			}
 			else if(turn + 1 > this.num_player.size()-1) {
 				i = 0;
-			}	
+			}
 		}
 	}
-	
+
 	//Logic components/Actions
 	  public void Hit(Players a) {//0 for hit
-		  
+
 	  }
-	  
+
 	  public void Stand(Players a) { //1 for stand
 		  //This means you're out of the round but you're score is still there
 		  a.still_playing = false;
-		  
+
 	  }
-	  
+
 	  public void DoubleUp(Players a) { //2 for Doubleup
 		  //the blackjack function will give me that hand
 		  a.amount_on_bet = a.amount_on_bet * 2;
-		  
+
 	  }
-	
+
 	//main method
-	
+
 	
 }
