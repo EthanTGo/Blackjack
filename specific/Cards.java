@@ -46,8 +46,12 @@ public class Cards {
           }
         }
   }
-  
+
   public int getValue() {
 	  return this.value;
+  }
+
+  public String getId() {
+    return id;
   }
 }
