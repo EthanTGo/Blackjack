@@ -8,12 +8,12 @@ public class BlackJack {
 	Deck default_deck;
 	Dealer dealer;
 	ArrayList<Players> num_player;
-	int round;
-	
+	int round; //which round
+	int turn; //whose turn this is
 	
 	public BlackJack() {
 		this.default_deck = new Deck();
-		this.dealer = new Dealer();
+		this.dealer = new Dealer(default_deck);
 		this.num_player = new ArrayList<Players>();
 		this.round = 0;
 	}

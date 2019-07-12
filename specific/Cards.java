@@ -3,7 +3,7 @@ package specific;
 public class Cards {
   private int value;
   public int Avalue; // 1 or 11
-  private String id;
+  public String id;
 
 
   public Cards (int i){ //initializer of cards
