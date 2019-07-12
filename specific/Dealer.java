@@ -23,6 +23,10 @@ public class Dealer {
     return a;
     }
 
+  public int getScore(){
+    return score;
+  }
+
 
 
 
