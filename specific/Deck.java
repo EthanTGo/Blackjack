@@ -13,11 +13,17 @@ public class Deck {
           }
         }
       }
-  public void removeCard(Cards a){
-      deck.remove(a.id);
+  public void removeCard(int i){
+      deck.remove(i);
   }
 
   public int sizeDeck(){
     return deck.size();
+  }
+
+  public Cards getCard(int i){
+    Cards a = deck.get(i)
+
+    return a;
   }
 }

@@ -13,17 +13,17 @@ public class Dealer {
     }
 
   public Cards getCard(Deck input){
-	Random rand = new Random();
+	  Random rand = new Random();
     int random = rand.nextInt(input.sizeDeck());
-    //check deck
-
+    //check deck find card
+    Cards a = input.getCard(random);
     //deck removeCard
-
+    input.removeCard();
     //get card
-    return input.deck.get(random);
-
-
-
-
+    return a;
     }
+
+
+
+
 }
