@@ -1,5 +1,5 @@
 package specific;
 
-public class Dealer {
+public class Deck {
 
 }
