@@ -5,57 +5,55 @@ import java.util.Scanner;
 
 public class BlackJack {
 	//attributes
-	Deck default_deck;
+	Deck deck;
 	Dealer dealer; //I believe the dealer
-	ArrayList<Players> num_player;
 	int round; //which round
 	int turn; //whose turn this is
 
 	public BlackJack() {
-		this.default_deck = new Deck();
+		this.deck = new Deck();
 		this.dealer = new Dealer();
-		this.num_player = new ArrayList<Players>();
 		this.round = 0;
 	}
 
-	public void playGame() {
-		startGame();
-		this.turn = 0;
+	public void playGame(Player player) {
+		//startGame();
+		//this.turn = 0;
 		//after initializing players, we keep playing until all the players are out...
-		while(this.num_player.size() > 1) { //until we have 1 winner
-			int action_to_be_taken = num_player.get(turn).Play();
-			switch(action_to_be_taken) {
-			case 0:
-				Hit(num_player.get(turn));
-				break;
-			case 1:
-				Stand(num_player.get(turn));
-				break;
-			case 2:
-				DoubleUp(num_player.get(turn));
-				break;
-			case 3:
-				break;
-			}
-			if(this.num_player.size() == 1) {
-				System.out.println("Okay, everybody have finished deciding");
-				break;
-			}
-			nextValidTurn();
-		}
-	}
+		while(player.Balance <= 0) { //until we have 1 winner
+      Scanner scan = new Scanner(System.in);
+  		System.out.println(" What action do you want to do?: 0 for Hit, 1 for Stand, 2 for DoubleUp");
+  		int input = scan.nextInt();
+  		  switch(input) {
+  		  	case 0:
+  			     Hit(player);
+  			     break;
+  		  	case 1:
+  		  	   Stand(player);
+  		  	   break;
+  		  	case 2:
+  		  	   DoubleUp(player)
+  			     break;
+  			default:
+  				System.out.println("Enter a correct value");
+      }
+    }
+  }
 
 
 	//Copied from the TicTacToe game :)
-	private Players createPlayers() {
+	public Players createPlayer() { //initalize player and its balance
 		Scanner scan = new Scanner(System.in);
 		System.out.println("enter your name: ");
-		String name = scan.nextLine();
 		Players player = new Players(name);
+    Scanner sc = new Scanner(System.in);
+    System.out.println("enter starting balance:");
+    String b = scan.nextInt();
+    player.updatebalance
 		return player;
 	}
 
-	private void startGame() {
+	private void startGame() {  // dont need
 		Scanner scan = new Scanner(System.in);
 		System.out.println("How many players are there: ");
 		int num_players = scan.nextInt();
@@ -72,7 +70,7 @@ public class BlackJack {
 		playGame();
 	}
 
-	private void nextValidTurn() {
+	private void nextValidTurn() { // dont need
 		//find the next valid turn
 		if(turn + 1 > this.num_player.size()-1) {
 			turn = -1;
@@ -104,9 +102,9 @@ public class BlackJack {
 		  //the blackjack function will give me that hand
 		  a.amount_on_bet = a.amount_on_bet * 2;
 
-	  }
+	  }w
 
 	//main method
 
-	
+
 }

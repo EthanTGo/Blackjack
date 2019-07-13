@@ -1,7 +1,7 @@
 package specific;
-import java.util.ArrayList; 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner; 
+import java.util.Scanner;
 
 
 public class Players {
@@ -9,13 +9,13 @@ public class Players {
 	String name;
 	Balance balance;
 	ArrayList<Cards> hand;
-	
+
 	//This is the in-game attributes of the player
 	boolean still_playing; //whether the player did not fold
 	int amount_on_bet;
 	int score; //this is the score based on the hand that the players has
 	boolean split; //this is only true if split
-	
+
 
   public Players(String name){
     this.name = name;
@@ -36,7 +36,7 @@ public class Players {
 				  valid_number = true;
 			  }
 		  }
-		  return input; 
+		  return input;
 	  }
 	  else {
 		  System.out.println(this.name + " What action do you want to do?: 0 for Hit, 1 for Stand, 2 for DoubleUp");
@@ -49,18 +49,31 @@ public class Players {
 		  }
 		  return input;
 	 }
-}  
- 
+}
+
   public void Bet(int bet_amount) {
 	  this.balance.decreaseBalance(bet_amount);
 	  this.amount_on_bet += bet_amount;
   }
-  
+
   public void score() { //returns the score based on the hand value
 	  for(int i = 0; i < this.hand.size(); i++) {
 		  score += this.hand.get(i).getValue();
 	  }
   }
+
+	public void updatebalance(int i){
+			balance= balance + i;
+	}
+
+	public Boolean checkPlayerBalance(){
+		if(balance <= 0){
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
 
 
 }
