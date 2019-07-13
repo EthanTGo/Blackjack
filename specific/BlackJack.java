@@ -21,6 +21,16 @@ public class BlackJack {
 		//this.turn = 0;
 		//after initializing players, we keep playing until all the players are out...
 		while(player.Balance <= 0) { //until we have 1 winner
+      dealer.getdhand(deck); //sets dealers dhand
+
+
+      //we need to add the things that happen before
+      //Todo
+
+
+
+
+
       Scanner scan = new Scanner(System.in);
   		System.out.println(" What action do you want to do?: 0 for Hit, 1 for Stand, 2 for DoubleUp");
   		int input = scan.nextInt();
@@ -87,6 +97,8 @@ public class BlackJack {
 		}
 	}
 
+
+  //todo
 	//Logic components/Actions
 	  public void Hit(Players a) {//0 for hit
 
