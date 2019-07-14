@@ -53,28 +53,70 @@ public class BlackJack {
       //This is where the game actually beginss
       while(player.still_playing) {
     	  if(this.split_exist) {
-    		  //treat each hand separately
-    		  System.out.println("For hand " + this.turn + " what do you want to do?: ");
+    		  Scanner scan = new Scanner(System.in);
+    		  for(int i = 0; i < this.split_case.size(); i++) {
+    			  Players current_hand = this.split_case.get(i);
+    			  System.out.println("for hand " + i + "what action do you want to do");
+    			  current_hand.printHand();
+    			  choose(current_hand);
+    		  }
     	  }
-    	  Scanner scan = new Scanner(System.in);
-  		  System.out.println(" What action do you want to do?: 0 for Hit, 1 for Stand, 2 for DoubleUp");
-  		  int input = scan.nextInt();
-  		  switch(input) {
-  		  	case 0:
-  			     Hit(player);
-  			     break;
-  		  	case 1:
-  		  	   Stand(player);
-  		  	   break;
-  		  	case 2:
-  		  	   DoubleUp(player);
-  			     break;
-  			default:
-  				System.out.println("Enter a correct value");
-  		  }
+    	  else {
+    		  choose(player);
+    	  }
       	}
     }
   }
+	
+	public void choose(Players player) {
+		  if(player.split) {
+			  split_input(player);
+		  }
+		  else {
+			  normal_input(player);
+		  }
+	}
+	
+	public void split_input(Players player) {
+		Scanner scan = new Scanner(System.in);
+		  System.out.println(" What action do you want to do?: 0 for Hit, 1 for Stand, 2 for DoubleUp");
+		  int input = scan.nextInt();
+		  switch(input) {
+		  	case 0:
+			     Hit(player);
+			     break;
+		  	case 1:
+		  	   Stand(player);
+		  	   break;
+		  	case 2:
+		  	   DoubleUp(player);
+			     break;
+		  	case 3:
+		  		Split(player);
+		  		break;
+			default:
+				System.out.println("Enter a correct value");
+		  }
+	}
+	
+	public void normal_input(Players player) {
+  	  Scanner scan = new Scanner(System.in);
+		  System.out.println(" What action do you want to do?: 0 for Hit, 1 for Stand, 2 for DoubleUp");
+		  int input = scan.nextInt();
+		  switch(input) {
+		  	case 0:
+			     Hit(player);
+			     break;
+		  	case 1:
+		  	   Stand(player);
+		  	   break;
+		  	case 2:
+		  	   DoubleUp(player);
+			     break;
+			default:
+				System.out.println("Enter a correct value");
+		  }
+	}
 
 
 	//Copied from the TicTacToe game :)
@@ -123,7 +165,6 @@ public class BlackJack {
 		  Hit(a);
 		  //add a  new player 
 		  Hit(temp);
-		  
 		  this.split_case.add(temp);
 	  }
 
