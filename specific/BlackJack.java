@@ -80,13 +80,13 @@ public class BlackJack {
 	  public void Stand(Players a) { //1 for stand
 		  //This means you're out of the round but you're score is still there
 		  a.still_playing = false;
-
 	  }
 
 	  public void DoubleUp(Players a) { //2 for Doubleup
 		  //the blackjack function will give me that hand
 		  a.amount_on_bet = a.amount_on_bet * 2;
-
+		  Hit(a);
+		  a.still_playing = false;
 	  }
 
 	//main method

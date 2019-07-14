@@ -13,6 +13,8 @@ public class Deck {
           }
         }
       }
+  
+  
   public void removeCard(int i){
       deck.remove(i);
   }
