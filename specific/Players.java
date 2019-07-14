@@ -70,6 +70,10 @@ public class Players {
 	  this.amount_on_bet += bet_amount;
   }
 
+	public int getBet(){
+		return amount_on_bet;
+	}
+
   public void score() { //returns the score based on the hand value
 	  for(int i = 0; i < this.hand.size(); i++) {
 		  score += this.hand.get(i).getValue();
@@ -104,7 +108,13 @@ public class Players {
 	}
 	public void printScore(){
 		System.out.println("Players score is " + score);
-
 		}
+
+	public void initalizeBalance(int i){
+		balance = new Balance(i);
+	}
+	public int getBalance(){
+		return balance.getMoney();
+	}
 
 	}

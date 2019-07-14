@@ -22,15 +22,30 @@ public class BlackJack {
 		//this.turn = 0;
 		//after initializing players, we keep playing until all the players are out...
 		while(player.balance.getMoney() <= 0) { //until we have player is out of money
-			dealer.getdhand(deck); //sets dealers dhand
+      System.out.println("Your current balance is: " + player.getBalance());
+      System.out.println("How much do you want to bet?");
+      Boolean validBet = true;
+      while(validBet){
+        Scanner scan = new Scanner(System.in);
+        int bet = scan.nextInt();
+        if(bet > 0 && bet <= player.balance.getMoney()){
+          validBet= false;
+          player.Bet(bet);
+        }
+        else{
+          System.out.println("invalid bet!");
+        }
+      }
+      System.out.println(player.getBet() + "is a valid bet!");
+
+
+      dealer.getdhand(deck); //sets dealers dhand
       dealer.updatescore();
       //set Player hand
       player.getPlayerHand(deck);
       player.score();
       player.printHand();
       player.printScore();
-
-
 
       Scanner scan = new Scanner(System.in);
   		System.out.println(" What action do you want to do?: 0 for Hit, 1 for Stand, 2 for DoubleUp");

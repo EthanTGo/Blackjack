@@ -15,6 +15,8 @@ public class Exec {
         BlackJack game = new BlackJack();
         //initalize player and balance
         Players CurrentPlayer = game.createPlayer();
+        System.out.println("Player will start with a balance of 1000$");
+        CurrentPlayer.initalizeBalance(1000);
         System.out.println("Let's start Playing");
         game.playGame(CurrentPlayer);
 
