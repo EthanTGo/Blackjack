@@ -20,14 +20,14 @@ public class BlackJack {
 		//startGame();
 		//this.turn = 0;
 		//after initializing players, we keep playing until all the players are out...
-		while(player.balance.getMoney() <= 0) { //until we have 1 winner
+		while(player.balance.getMoney() <= 0) { //until we have player is out of money
 			dealer.getdhand(deck); //sets dealers dhand
-
-
-      //we need to add the things that happen before
-      //Todo
-
-
+      dealer.updatescore();
+      //set Player hand
+      player.getPlayerHand(deck);
+      player.score();
+      player.printHand();
+      player.printScore();
 
 
 

@@ -22,6 +22,19 @@ public class Players {
     this.balance = new Balance(0);
   }
 
+	public void getPlayerHand(Deck d){ //inital hand
+		Random rand = new Random();
+    int random = rand.nextInt(d.sizeDeck());
+    Cards a = d.getCard(random);
+    input.removeCard(random);
+    hand.add(a);
+    int rand2 = rand.nextInt(input.sizeDeck());
+    Cards b = d.getCard(rand2);
+    d.removeCard(rand2);
+    hand.add(d);
+	}
+
+
   //Player should be able to: Hit, Stand, Split, Double up, Bet
   public int Play() {
 	  boolean valid_number = false;
@@ -78,6 +91,23 @@ public class Players {
 		else{
 			return true;
 		}
+	}
+
+	public void printHand(){
+		StringBuilder sb = new StringBuilder();
+		sb.append("Your cards are: ")
+		for(int i = 0; i < this.hand.size(); i++) {
+			sb.append(this.hand.get(i).getId() + " ");
+		}
+		System.out.println(sb);
+	}
+	public void printScore(){
+		System.out.println("Players score is " + score);
+
+	}
+
+
+
 	}
 
 

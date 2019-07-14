@@ -43,6 +43,8 @@ public class Dealer {
     dhand.add(hidden);
   }
 
+
+
   public void adddhand(Deck input){ //add one card
     Random rand = new Random();
     int random = rand.nextInt(input.sizeDeck());
@@ -53,7 +55,7 @@ public class Dealer {
 
   public void updatescore(){ //we need to consider the Ace case
     for(int i = 0; i < this.dhand.size(); i++) {
-		  score += dhand.get(i).getValue();
+		  dhand.get(i).getValue();
 	  }
   }
 }
