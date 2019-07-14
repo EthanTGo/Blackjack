@@ -16,12 +16,12 @@ public class BlackJack {
 		this.round = 0;
 	}
 
-	public void playGame(Player player) {
+	public void playGame(Players player) {
 		//startGame();
 		//this.turn = 0;
 		//after initializing players, we keep playing until all the players are out...
-		while(player.Balance <= 0) { //until we have 1 winner
-      dealer.getdhand(deck); //sets dealers dhand
+		while(player.balance.getMoney() <= 0) { //until we have 1 winner
+			dealer.getdhand(deck); //sets dealers dhand
 
 
       //we need to add the things that happen before
@@ -42,7 +42,7 @@ public class BlackJack {
   		  	   Stand(player);
   		  	   break;
   		  	case 2:
-  		  	   DoubleUp(player)
+  		  	   DoubleUp(player);
   			     break;
   			default:
   				System.out.println("Enter a correct value");
@@ -53,50 +53,20 @@ public class BlackJack {
 
 	//Copied from the TicTacToe game :)
 	public Players createPlayer() { //initalize player and its balance
-		Scanner scan = new Scanner(System.in);
+	Scanner scan = new Scanner(System.in);
 		System.out.println("enter your name: ");
+		String name = scan.nextLine();
 		Players player = new Players(name);
-    Scanner sc = new Scanner(System.in);
     System.out.println("enter starting balance:");
-    String b = scan.nextInt();
-    player.updatebalance
+    int b = scan.nextInt();
+    player.updatebalance(b);
 		return player;
 	}
 
-	private void startGame() {  // dont need
-		Scanner scan = new Scanner(System.in);
-		System.out.println("How many players are there: ");
-		int num_players = scan.nextInt();
-		for(int i = 0; i < num_players; i++) {
-			//Create a new players for each input
-			this.num_player.add(createPlayers());
-		}
-	}
-
 	private void reset() { //a function that resets everything
-		this.default_deck = new Deck();
-		this.num_player = new ArrayList<Players>();
+		this.deck = new Deck();
 		this.round = 0;
-		playGame();
 	}
-
-	private void nextValidTurn() { // dont need
-		//find the next valid turn
-		if(turn + 1 > this.num_player.size()-1) {
-			turn = -1;
-		}
-		for(int i = turn+1; i < this.num_player.size(); i++) {
-			//turn can be 0,1,2,...,size - 1
-			if(this.num_player.get(i).still_playing) {
-				this.turn = i;
-				break;
-			}
-			else if(turn + 1 > this.num_player.size()-1) {
-				i = 0;
-			}
-		}
-	}
-
 
   //todo
 	//Logic components/Actions
@@ -114,7 +84,7 @@ public class BlackJack {
 		  //the blackjack function will give me that hand
 		  a.amount_on_bet = a.amount_on_bet * 2;
 
-	  }w
+	  }
 
 	//main method
 

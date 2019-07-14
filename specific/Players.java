@@ -63,7 +63,12 @@ public class Players {
   }
 
 	public void updatebalance(int i){
-			balance= balance + i;
+			if(i > 0) {
+				this.balance.addBalance(i);
+			}
+			else {
+				this.balance.decreaseBalance(i);
+			}
 	}
 
 	public Boolean checkPlayerBalance(){
