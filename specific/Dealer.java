@@ -15,12 +15,12 @@ public class Dealer {
     }
 
   public Cards getCard(Deck input){
-	  Random rand = new Random();
+	Random rand = new Random();
     int random = rand.nextInt(input.sizeDeck());
     //check deck find card
     Cards a = input.getCard(random);
     //deck removeCard
-    input.removeCard(a);
+    input.removeCard(random);
     //get card
     return a;
     }
@@ -33,26 +33,26 @@ public class Dealer {
     Random rand = new Random();
     int random = rand.nextInt(input.sizeDeck());
     Cards a = input.getCard(random);
-    input.removeCard(a);
-    show= a;
-    dhand.add(show)
-    int ran = rand.nextInt(input.sizeDeck());
-    Cards b = input.getCard(ran);
-    input.removeCard(b);
-    hidden =b;
-    dhand.add(hidden)
+    input.removeCard(random);
+    show = a;
+    dhand.add(show);
+    int rand2 = rand.nextInt(input.sizeDeck());
+    Cards b = input.getCard(rand2);
+    input.removeCard(rand2);
+    hidden = b;
+    dhand.add(hidden);
   }
 
   public void adddhand(Deck input){ //add one card
     Random rand = new Random();
     int random = rand.nextInt(input.sizeDeck());
     Cards a = input.getCard(random);
-    input.removeCard(a);
-    dhand.add(a)
+    input.removeCard(random);
+    dhand.add(a);
   }
 
   public void updatescore(){ //we need to consider the Ace case
-    for(int i = 0; i < this.hand.size(); i++) {
+    for(int i = 0; i < this.dhand.size(); i++) {
 		  score += dhand.get(i).getValue();
 	  }
   }

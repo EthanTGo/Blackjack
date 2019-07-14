@@ -71,7 +71,10 @@ public class BlackJack {
   //todo
 	//Logic components/Actions
 	  public void Hit(Players a) {//0 for hit
-
+		  //remove a card from deck
+		  //add a card to Player
+		  Cards hit = this.dealer.getCard(this.deck);
+		  a.hand.add(hit); //add that card
 	  }
 
 	  public void Stand(Players a) { //1 for stand

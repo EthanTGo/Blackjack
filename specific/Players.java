@@ -72,7 +72,7 @@ public class Players {
 	}
 
 	public Boolean checkPlayerBalance(){
-		if(balance <= 0){
+		if(balance.getMoney() <= 0){
 			return false;
 		}
 		else{
