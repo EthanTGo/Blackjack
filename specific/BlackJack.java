@@ -2,6 +2,7 @@ package specific;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 
 public class BlackJack {
 	//attributes

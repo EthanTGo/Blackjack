@@ -2,6 +2,7 @@ package specific;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Random;
 
 
 public class Players {
@@ -26,12 +27,12 @@ public class Players {
 		Random rand = new Random();
     int random = rand.nextInt(d.sizeDeck());
     Cards a = d.getCard(random);
-    input.removeCard(random);
+    d.removeCard(random);
     hand.add(a);
-    int rand2 = rand.nextInt(input.sizeDeck());
+    int rand2 = rand.nextInt(d.sizeDeck());
     Cards b = d.getCard(rand2);
     d.removeCard(rand2);
-    hand.add(d);
+    hand.add(b);
 	}
 
 
@@ -95,7 +96,7 @@ public class Players {
 
 	public void printHand(){
 		StringBuilder sb = new StringBuilder();
-		sb.append("Your cards are: ")
+		sb.append("Your cards are: ");
 		for(int i = 0; i < this.hand.size(); i++) {
 			sb.append(this.hand.get(i).getId() + " ");
 		}
@@ -104,11 +105,6 @@ public class Players {
 	public void printScore(){
 		System.out.println("Players score is " + score);
 
-	}
-
-
+		}
 
 	}
-
-
-}

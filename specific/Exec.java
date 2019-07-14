@@ -2,6 +2,7 @@ package specific;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Exec {
   public static boolean keepPlaying = true;
@@ -31,4 +32,3 @@ public class Exec {
 
     }
     }
-
