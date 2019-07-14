@@ -22,6 +22,10 @@ public class Players {
     this.name = name;
     this.balance = new Balance(0);
   }
+  
+  public Players() {
+	  
+  }
 
 	public void getPlayerHand(Deck d){ //inital hand
 		Random rand = new Random();
@@ -116,5 +120,12 @@ public class Players {
 	public int getBalance(){
 		return balance.getMoney();
 	}
-
+	
+	public void split() {
+		//initialize in the case of a split 
+		Players second_hand = new Players();
 	}
+	
+	
+	}
+

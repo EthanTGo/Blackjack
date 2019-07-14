@@ -35,15 +35,13 @@ public class Dealer {
     Cards a = input.getCard(random);
     input.removeCard(random);
     show = a;
-    dhand.add(show);
+    dhand.add(show); //The first card to be shown
     int rand2 = rand.nextInt(input.sizeDeck());
     Cards b = input.getCard(rand2);
     input.removeCard(rand2);
     hidden = b;
-    dhand.add(hidden);
+    dhand.add(hidden); //the second card is hidden (as game)
   }
-
-
 
   public void adddhand(Deck input){ //add one card
     Random rand = new Random();
@@ -55,7 +53,7 @@ public class Dealer {
 
   public void updatescore(){ //we need to consider the Ace case
     for(int i = 0; i < this.dhand.size(); i++) {
-		  dhand.get(i).getValue();
+		  score += dhand.get(i).getValue();
 	  }
   }
 }

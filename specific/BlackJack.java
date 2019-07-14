@@ -10,18 +10,21 @@ public class BlackJack {
 	Dealer dealer; //I believe the dealer
 	int round; //which round
 	int turn; //whose turn this is
+	boolean split_exist;
+	ArrayList<Players> split_case = new ArrayList<Players>();
 
 	public BlackJack() {
 		this.deck = new Deck();
 		this.dealer = new Dealer();
 		this.round = 0;
+		this.split_exist = false;
 	}
 
 	public void playGame(Players player) {
 		//startGame();
 		//this.turn = 0;
 		//after initializing players, we keep playing until all the players are out...
-		while(player.balance.getMoney() <= 0) { //until we have player is out of money
+	while(player.balance.getMoney() <= 0) {//until we have player is out of money
       System.out.println("Your current balance is: " + player.getBalance());
       System.out.println("How much do you want to bet?");
       Boolean validBet = true;
@@ -47,9 +50,15 @@ public class BlackJack {
       player.printHand();
       player.printScore();
 
-      Scanner scan = new Scanner(System.in);
-  		System.out.println(" What action do you want to do?: 0 for Hit, 1 for Stand, 2 for DoubleUp");
-  		int input = scan.nextInt();
+      //This is where the game actually beginss
+      while(player.still_playing) {
+    	  if(this.split_exist) {
+    		  //treat each hand separately
+    		  System.out.println("For hand " + this.turn + " what do you want to do?: ");
+    	  }
+    	  Scanner scan = new Scanner(System.in);
+  		  System.out.println(" What action do you want to do?: 0 for Hit, 1 for Stand, 2 for DoubleUp");
+  		  int input = scan.nextInt();
   		  switch(input) {
   		  	case 0:
   			     Hit(player);
@@ -62,7 +71,8 @@ public class BlackJack {
   			     break;
   			default:
   				System.out.println("Enter a correct value");
-      }
+  		  }
+      	}
     }
   }
 
@@ -104,8 +114,22 @@ public class BlackJack {
 		  Hit(a);
 		  a.still_playing = false;
 	  }
+	  
+	  public void Split(Players a) {
+		  // Split -> the player has to split their hand into two, can we just make another player???
+		  Players temp = new Players();
+		  a.hand.remove(0); //creates two new hand for both players
+		  //
+		  Hit(a);
+		  //add a  new player 
+		  Hit(temp);
+		  
+		  this.split_case.add(temp);
+	  }
 
 	//main method
 
 
 }
+
+
