@@ -48,17 +48,17 @@ public class Cards {
   }
 
   public int getValue() {
-	  return this.value;
+      return this.value;
   }
 
   public String getId() {
     return id;
   }
-  
+
   public boolean equals(Cards other) {
-	  if(this.id.equals(other.id)) {
-		  return true;
-	  }
-	  return false;
+      if(this.id.equals(other.id)) {
+          return true;
+      }
+      return false;
   }
 }

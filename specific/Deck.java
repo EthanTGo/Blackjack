@@ -13,8 +13,8 @@ public class Deck {
           }
         }
       }
-  
-  
+
+
   public void removeCard(int i){
       deck.remove(i);
   }
@@ -27,4 +27,5 @@ public class Deck {
     Cards a = deck.get(i);
     return a;
   }
+
 }
