@@ -15,12 +15,31 @@ public class Players {
 	boolean still_playing; //whether the player did not fold
 	int amount_on_bet;
 	int score; //this is the score based on the hand that the players has
-	boolean split; //this is only true if split
+	boolean split; //this is only true if split potential exist
 
 
   public Players(String name){
     this.name = name;
     this.balance = new Balance(0);
+  }
+  
+  public boolean checkDuplicate(Cards check, int position) { //checks for duplicate
+	  for(int i = position; i < this.hand.size(); i++) {
+		  if(check.equals(this.hand.get(i))) {
+			  return true;
+		  }
+	  }
+	  return false;
+  }
+  
+  public void checkSplit() {
+	  for(int i = 0; i < this.hand.size(); i++) {
+		  String id = hand.get(i).id;
+		  if(checkDuplicate(this.hand.get(i),i)) {
+			  this.split = true;
+			  break;
+		  }
+	  }
   }
   
   public Players() {

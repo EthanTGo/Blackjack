@@ -9,28 +9,34 @@ public class Exec {
   //main method
 	public static void main(String[] args) {
 
-      while(keepPlaying){
-        System.out.println("Welcome! Lets play Black Jack!");
-        //initalize deck and dealer and game
-        BlackJack game = new BlackJack();
-        //initalize player and balance
-        Players CurrentPlayer = game.createPlayer();
-        System.out.println("Player will start with a balance of 1000$");
-        CurrentPlayer.initalizeBalance(1000);
-        System.out.println("Let's start Playing");
-        game.playGame(CurrentPlayer);
-
-        //after initial game ends, ask if they want to continue?
-        System.out.println("Do you want to play again: Yes or No");
-        Scanner scan = new Scanner(System.in);
-        String ans = scan.nextLine();
-        if(ans == "No"){
-          keepPlaying = false;
-        } else {
-          continue;
-        }
-
+//      while(keepPlaying){
+//        System.out.println("Welcome! Lets play Black Jack!");
+//        //initalize deck and dealer and game
+//        BlackJack game = new BlackJack();
+//        //initalize player and balance
+//        Players CurrentPlayer = game.createPlayer();
+//        System.out.println("Player will start with a balance of 1000$");
+//        CurrentPlayer.initalizeBalance(1000);
+//        System.out.println("Let's start Playing");
+//        game.playGame(CurrentPlayer);
+//
+//        //after initial game ends, ask if they want to continue?
+//        System.out.println("Do you want to play again: Yes or No");
+//        Scanner scan = new Scanner(System.in);
+//        String ans = scan.nextLine();
+//        if(ans == "No"){
+//          keepPlaying = false;
+//        } else {
+//          continue;
+//        }
+//
+//      }
+      int k = 1;
+      for(int i = 1; i < k; i++) {
+    	  System.out.println(i);
+    	  
       }
+      System.out.println("hi");
 
     }
     }
