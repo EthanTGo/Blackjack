@@ -249,9 +249,10 @@ public class BlackJack {
         System.out.println(p.name + " has won "+ p.getBet() +"!");
         System.out.println("Your Balance: " +  p.balance.getMoney());
         p.still_playing = false;
+      } else if (p.score == d.getScore()){
+        System.out.println("Draw! No money lost or gained!");
+        p.still_playing = false;
       }
-
-
       }
     public void quickcheck(Players a) {
       if(a.score > 21) {
