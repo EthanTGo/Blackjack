@@ -170,7 +170,7 @@ public void score() { //returns the score based on the hand value
       if(score > 11) {
         score += 1;
       } else {
-        score += 10;
+        score += 11;
       }
     }
     else {

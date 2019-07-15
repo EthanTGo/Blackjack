@@ -14,6 +14,7 @@ public class BlackJack {
   boolean cashout;
   ArrayList<Players> split_case = new ArrayList<Players>();
   boolean canDouble;
+  boolean still_playing;
 
   public BlackJack() {
       this.deck = new Deck();
@@ -51,7 +52,16 @@ public class BlackJack {
     player.score();
     player.printHand();
     player.printScore();
-    player.still_playing = true;
+
+    if(player.getScore() == 21){
+        player.still_playing = false;
+        System.out.println("BlackJack!");
+        dealer.dstand(player, deck);
+        checkWhoWin(player, dealer);
+
+    } else{
+        player.still_playing = true;
+    }
 
     //This is where the game actually beginss
     while(player.still_playing) {

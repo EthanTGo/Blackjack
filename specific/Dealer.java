@@ -103,7 +103,7 @@ public class Dealer {
             score += 1;
           }
           else{
-            score += 10;
+            score += 11;
           }
         }
     }
