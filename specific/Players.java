@@ -98,10 +98,25 @@ public void Bet(int bet_amount) {
   }
 
 public void score() { //returns the score based on the hand value
+    int aceCounter = 0;
     for(int i = 0; i < this.hand.size(); i++) {
+        if(hand.get(i).getId() == "Ace"){
+          aceCounter += 1;
+        }
         score += this.hand.get(i).getValue();
     }
+    if(aceCounter > 0){ //Ace Condition
+      for(int j = 0; j < aceCounter; j++){
+        if(score > 11){
+          score += 1;
+        }
+        else{
+          score += 10;
+        }
+      }
+    }
 }
+
 
   public void updatebalance(int i){
           if(i > 0) {
@@ -151,7 +166,15 @@ public void score() { //returns the score based on the hand value
 
   public void updateScore(Cards c) {
     int value = c.getValue();
-    score += value;
+    if(c.id == "Ace") {
+      if(score > 11) {
+        score += 1;
+      } else {
+        score += 10;
+      }
+    }
+    else {
+      score += value;
+    }
   }
-
 }

@@ -82,14 +82,31 @@ public class Dealer {
 
   public void initalscore() {
     score += show.getValue();
+    if(show.id == "Ace") {
+      score +=  10;
+    }
     System.out.println("Dealer's score is " + score);
   }
 
   public void updatescore(){ //we need to consider the Ace case
+    int aceCounter = 0;
     score = 0;
     for(int i = 0; i < this.dhand.size(); i++) {
+          if(dhand.get(i).getId() == "Ace"){
+            aceCounter += 1;
+          }
           score += dhand.get(i).getValue();
       }
+    if(aceCounter > 0){ //Ace Condition
+        for(int j = 0; j < aceCounter; j++){
+          if(score > 11){
+            score += 1;
+          }
+          else{
+            score += 10;
+          }
+        }
+    }
     System.out.println("Dealer's score is " + score);
   }
 
