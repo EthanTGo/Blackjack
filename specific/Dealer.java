@@ -51,7 +51,7 @@ public class Dealer {
   }
 
   public void dstand(Players p,  Deck d) {
-    while(score < p.score && score != 21) {
+    while(score < 17) {
       adddhand(d); // add to dealers hand
       printallcards(); //show all current cards (reveal hidden cards)
       updatescore(); //show score
