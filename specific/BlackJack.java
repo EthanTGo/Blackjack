@@ -24,7 +24,8 @@ public class BlackJack {
 		//startGame();
 		//this.turn = 0;
 		//after initializing players, we keep playing until all the players are out...
-	while(player.balance.getMoney() <= 0) {//until we have player is out of money
+		
+	while(player.balance.getMoney() >= 0) {//until we have player is out of money
       System.out.println("Your current balance is: " + player.getBalance());
       System.out.println("How much do you want to bet?");
       Boolean validBet = true;
@@ -68,7 +69,7 @@ public class BlackJack {
     }
   }
 	
-	public void choose(Players player) {
+	private void choose(Players player) {
 		  if(player.split) {
 			  split_input(player);
 		  }
@@ -77,7 +78,7 @@ public class BlackJack {
 		  }
 	}
 	
-	public void split_input(Players player) {
+	private void split_input(Players player) {
 		Scanner scan = new Scanner(System.in);
 		  System.out.println(" What action do you want to do?: 0 for Hit, 1 for Stand, 2 for DoubleUp");
 		  int input = scan.nextInt();
@@ -99,7 +100,7 @@ public class BlackJack {
 		  }
 	}
 	
-	public void normal_input(Players player) {
+	private void normal_input(Players player) {
   	  Scanner scan = new Scanner(System.in);
 		  System.out.println(" What action do you want to do?: 0 for Hit, 1 for Stand, 2 for DoubleUp");
 		  int input = scan.nextInt();
@@ -118,16 +119,12 @@ public class BlackJack {
 		  }
 	}
 
-
 	//Copied from the TicTacToe game :)
 	public Players createPlayer() { //initalize player and its balance
-	Scanner scan = new Scanner(System.in);
+		Scanner scan = new Scanner(System.in);
 		System.out.println("enter your name: ");
 		String name = scan.nextLine();
 		Players player = new Players(name);
-    System.out.println("enter starting balance:");
-    int b = scan.nextInt();
-    player.updatebalance(b);
 		return player;
 	}
 
@@ -167,8 +164,6 @@ public class BlackJack {
 		  Hit(temp);
 		  this.split_case.add(temp);
 	  }
-
-	//main method
 
 
 }
