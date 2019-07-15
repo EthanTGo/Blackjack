@@ -13,6 +13,7 @@ public class BlackJack {
   boolean split_exist;
   boolean cashout;
   ArrayList<Players> split_case = new ArrayList<Players>();
+  boolean canDouble;
 
   public BlackJack() {
       this.deck = new Deck();
@@ -133,8 +134,9 @@ public class BlackJack {
              checkWhoWin(player, dealer);
              break;
           case 2:
+             canDouble = false;
              DoubleUp(player);
-             if(player.still_playing == false) {
+             if(canDouble) {
                break;
              }else {
              Stand(player);
@@ -190,6 +192,7 @@ public class BlackJack {
         int afterInitBet = currentAmount - a.amount_on_bet; // (500)
         if( amount > currentAmount) {
           System.out.println("Invalid Call: Not enough Balance");
+          canDouble = true;
         } else {
         a.amount_on_bet = amount;
         System.out.println(a.name + "'s new bet is " + a.amount_on_bet);
