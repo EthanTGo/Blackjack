@@ -9,6 +9,7 @@ public class Exec {
   //main method
 	public static void main(String[] args) {
 
+		
       while(keepPlaying){
         System.out.println("Welcome! Lets play Black Jack!");
         //initalize deck and dealer and game

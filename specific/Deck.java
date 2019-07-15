@@ -25,7 +25,6 @@ public class Deck {
 
   public Cards getCard(int i){
     Cards a = deck.get(i);
-
     return a;
   }
 }

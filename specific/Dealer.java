@@ -55,5 +55,6 @@ public class Dealer {
     for(int i = 0; i < this.dhand.size(); i++) {
 		  score += dhand.get(i).getValue();
 	  }
+    System.out.println("Dealer's score is " + score);
   }
 }

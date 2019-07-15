@@ -40,7 +40,7 @@ public class BlackJack {
           System.out.println("invalid bet!");
         }
       }
-      System.out.println(player.getBet() + "is a valid bet!");
+      System.out.println(player.getBet() + " is a valid bet!");
 
 
       dealer.getdhand(deck); //sets dealers dhand
@@ -50,6 +50,7 @@ public class BlackJack {
       player.score();
       player.printHand();
       player.printScore();
+      player.still_playing = true;
 
       //This is where the game actually beginss
       while(player.still_playing) {

@@ -9,7 +9,7 @@ public class Players {
   //Should have: name, Balance
 	String name;
 	Balance balance;
-	ArrayList<Cards> hand;
+	ArrayList<Cards> hand = new ArrayList<Cards>();
 
 	//This is the in-game attributes of the player
 	boolean still_playing; //whether the player did not fold
@@ -48,14 +48,14 @@ public class Players {
 
 	public void getPlayerHand(Deck d){ //inital hand
 		Random rand = new Random();
-    int random = rand.nextInt(d.sizeDeck());
-    Cards a = d.getCard(random);
-    d.removeCard(random);
-    hand.add(a);
-    int rand2 = rand.nextInt(d.sizeDeck());
-    Cards b = d.getCard(rand2);
-    d.removeCard(rand2);
-    hand.add(b);
+		int random = rand.nextInt(d.sizeDeck());
+		Cards a = d.getCard(random);
+		d.removeCard(random);
+		this.hand.add(a);
+		int rand2 = rand.nextInt(d.sizeDeck());
+		Cards b = d.getCard(rand2);
+		d.removeCard(rand2);
+		hand.add(b);
 	}
 
 
