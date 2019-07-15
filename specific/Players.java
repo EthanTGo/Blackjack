@@ -111,7 +111,7 @@ public void score() { //returns the score based on the hand value
           score += 1;
         }
         else{
-          score += 10;
+          score += 11;
         }
       }
     }
@@ -134,6 +134,10 @@ public void score() { //returns the score based on the hand value
       else{
           return true;
       }
+  }
+
+  public void resetscore() {
+    score = 0;
   }
 
   public void printHand(){
@@ -176,5 +180,14 @@ public void score() { //returns the score based on the hand value
     else {
       score += value;
     }
+  }
+
+  public boolean containSplit() {
+    if(hand.get(0).getId() == hand.get(1).getId() ) {
+      return true;
+    } else {
+      return false;
+    }
+
   }
 }

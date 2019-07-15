@@ -63,8 +63,8 @@ public class BlackJack {
     }
 
     //This is where the game actually beginss
-    while(player.still_playing) {
-      if(player.containSplit()) {
+    while(player.still_playing) { // player.containSplit()
+      if(true) {
         split_input(player) ;
 
       }else {
@@ -114,7 +114,7 @@ public class BlackJack {
 
   private void split_input(Players player) {
       Scanner scan = new Scanner(System.in);
-        System.out.println(" What action do you want to do?: 0 for Hit, 1 for Stand, 2 for DoubleUp");
+        System.out.println(" What action do you want to do?: 0 for Hit, 1 for Stand, 2 for DoubleUp, 3 for Split:");
         int input = scan.nextInt();
         switch(input) {
           case 0:
@@ -139,7 +139,7 @@ public class BlackJack {
           case 3:
               Players secondH = Split(player);
               normal_input(player);
-              normal_input(secondH);
+              second_input(secondH);
               break;
           default:
               System.out.println("Enter a correct value");
@@ -175,6 +175,34 @@ public class BlackJack {
         }
   }
 
+  private void second_input(Players player) {
+    Scanner scan = new Scanner(System.in);
+        System.out.println(" What action do you want to do?: 0 for Hit, 1 for Stand, 2 for DoubleUp");
+        int input = scan.nextInt();
+        switch(input) {
+          case 0:
+               Hit(player);
+               break;
+          case 1:
+             Stand(player);
+             checkWhoWin(player, dealer);
+             break;
+          case 2:
+             canDouble = false;
+             DoubleUp(player);
+             if(canDouble) {
+               break;
+             }else {
+             Stand(player);
+             checkWhoWin(player, dealer);
+             break;
+             }
+          default:
+             System.out.println("Enter a correct value");
+        }
+  }
+
+
   //Copied from the TicTacToe game :)
   public Players createPlayer() { //initalize player and its balance
       Scanner scan = new Scanner(System.in);
@@ -200,7 +228,7 @@ public class BlackJack {
         //add a card to Player
         Cards hit = this.dealer.getCard(this.deck);
         a.hand.add(hit); //add that card
-        a.updateScore(hit);;
+        a.score();;
         a.printHand();
         a.printScore();
         quickcheck(a);
@@ -233,10 +261,9 @@ public class BlackJack {
         Cards t = a.hand.get(1);
         temp.hand.add(t);
         a.hand.remove(1); //creates two new hand for both players
-        Hit(temp);
-        temp.printHand();
+        a.resetscore();
         Hit(a);
-        a.printHand();
+        Hit(temp);
         a.score();
         temp.score();
         return temp;
