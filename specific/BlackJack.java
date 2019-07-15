@@ -53,7 +53,7 @@ public class BlackJack {
     player.printHand();
     player.printScore();
 
-    if(player.getScore() == 21){
+    if(player.score == 21){
         player.still_playing = false;
         System.out.println("BlackJack!");
         dealer.dstand(player, deck);
