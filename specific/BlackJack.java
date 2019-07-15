@@ -1,5 +1,4 @@
-package specific;
-
+package blackjack;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
@@ -65,7 +64,12 @@ public class BlackJack {
 
     //This is where the game actually beginss
     while(player.still_playing) {
-      normal_input(player);
+      if(player.containSplit()) {
+        split_input(player) ;
+
+      }else {
+        normal_input(player);
+      }
       /*if(this.split_exist) {
             Scanner scan = new Scanner(System.in);
             for(int i = 0; i < this.split_case.size(); i++) {
@@ -117,13 +121,25 @@ public class BlackJack {
               Hit(player);
               break;
           case 1:
-              Stand(player);
-              break;
+            Stand(player);
+            dealer.dstand(player, deck);
+            checkWhoWin(player, dealer);
+            break;
           case 2:
-              DoubleUp(player);
+            canDouble = false;
+            DoubleUp(player);
+            if(canDouble) {
               break;
+            }else {
+            Stand(player);
+            dealer.dstand(player, deck);
+            checkWhoWin(player, dealer);
+            break;
+            }
           case 3:
-              Split(player);
+              Players secondH = Split(player);
+              normal_input(player);
+              normal_input(secondH);
               break;
           default:
               System.out.println("Enter a correct value");
@@ -210,15 +226,20 @@ public class BlackJack {
         }
     }
 
-    public void Split(Players a) {
+    public Players Split(Players a) {
         // Split -> the player has to split their hand into two, can we just make another player???
         Players temp = new Players();
-        a.hand.remove(0); //creates two new hand for both players
-        //
-        Hit(a);
-        //add a  new player
+        temp.name = "Second Hand";
+        Cards t = a.hand.get(1);
+        temp.hand.add(t);
+        a.hand.remove(1); //creates two new hand for both players
         Hit(temp);
-        this.split_case.add(temp);
+        temp.printHand();
+        Hit(a);
+        a.printHand();
+        a.score();
+        temp.score();
+        return temp;
     }
 
     public void checkWhoWin(Players p, Dealer d) { //Win tester
