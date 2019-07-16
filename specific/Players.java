@@ -9,62 +9,25 @@ public class Players {
 //Should have: name, Balance
   String name;
   Balance balance;
-  ArrayList<Cards> hand = new ArrayList<Cards>();
-
+  ArrayList<Hand> totalHand = new ArrayList<Hand>();
   //This is the in-game attributes of the player
-  boolean still_playing; //whether the player did not fold
-  int amount_on_bet;
-  int score; //this is the score based on the hand that the players has
-  boolean split; //this is only true if split potential exist
-
+  boolean still_playing; //whether the player's still has valid amount of hands
 
 public Players(String name){
   this.name = name;
   this.balance = new Balance(0);
 }
 
-public boolean checkDuplicate(Cards check, int position) { //checks for duplicate
-    for(int i = position; i < this.hand.size(); i++) {
-        if(check.equals(this.hand.get(i))) {
-            return true;
-        }
-    }
-    return false;
-}
-
-public void checkSplit() {
-    for(int i = 0; i < this.hand.size(); i++) {
-        String id = hand.get(i).id;
-        if(checkDuplicate(this.hand.get(i),i)) {
-            this.split = true;
-            break;
-        }
-    }
-}
-
-public Players() {
-
-}
-
   public void getPlayerHand(Deck d){ //inital hand
-      Random rand = new Random();
-      int random = rand.nextInt(d.sizeDeck());
-      Cards a = d.getCard(random);
-      d.removeCard(random);
-      this.hand.add(a);
-      int rand2 = rand.nextInt(d.sizeDeck());
-      Cards b = d.getCard(rand2);
-      d.removeCard(rand2);
-      hand.add(b);
+	  
   }
 
-
 //Player should be able to: Hit, Stand, Split, Double up, Bet
-public int Play() {
+public int Play(Hand play_hand) {
     boolean valid_number = false;
     int input = 0;
     Scanner scan = new Scanner(System.in);
-    if(split) { //if the split is not possible
+    if(play_hand.checkSplit()) { //if the split is not possible
         System.out.println(this.name + " What action do you want to do?: 0 for Hit, 1 for Stand, 2 for DoubleUp, 3 for Split");
         while(!valid_number) {
             System.out.println("Enter a valid number");
@@ -88,35 +51,6 @@ public int Play() {
    }
 }
 
-public void Bet(int bet_amount) {
-    //this.balance.decreaseBalance(bet_amount);
-    this.amount_on_bet += bet_amount;
-}
-
-  public int getBet(){
-      return amount_on_bet;
-  }
-
-public void score() { //returns the score based on the hand value
-    int aceCounter = 0;
-    for(int i = 0; i < this.hand.size(); i++) {
-        if(hand.get(i).getId() == "Ace"){
-          aceCounter += 1;
-        }
-        score += this.hand.get(i).getValue();
-    }
-    if(aceCounter > 0){ //Ace Condition
-      for(int j = 0; j < aceCounter; j++){
-        if(score > 11){
-          score += 1;
-        }
-        else{
-          score += 11;
-        }
-      }
-    }
-}
-
 
   public void updatebalance(int i){
           if(i > 0) {
@@ -136,24 +70,9 @@ public void score() { //returns the score based on the hand value
       }
   }
 
-  public void resetscore() {
-    score = 0;
-  }
-
-  public void printHand(){
-      StringBuilder sb = new StringBuilder();
-      sb.append("Your cards are: ");
-      for(int i = 0; i < this.hand.size(); i++) {
-        if(i == (this.hand.size() -1 )) {
-          sb.append(this.hand.get(i).getId());
-        } else {
-          sb.append(this.hand.get(i).getId() + " and ");
-        }
-      }
-      System.out.println(sb);
-  }
-  public void printScore(){
-      System.out.println("Player's score is " + score);
+  
+  public void printScore(Hand score, int num){
+      System.out.println("Player's score for hand " + num + " is " + score.score);
       }
 
   public void initalizeBalance(int i){
@@ -163,27 +82,8 @@ public void score() { //returns the score based on the hand value
       return balance.getMoney();
   }
 
-  public void split() {
-      //initialize in the case of a split
-      Players second_hand = new Players();
-  }
-
-  public void updateScore(Cards c) {
-    int value = c.getValue();
-    if(c.id == "Ace") {
-      if(score > 11) {
-        score += 1;
-      } else {
-        score += 11;
-      }
-    }
-    else {
-      score += value;
-    }
-  }
-
   public boolean containSplit() {
-    if(hand.get(0).getId() == hand.get(1).getId() ) {
+    if(totalHand.get(0).hand.get(0).getId() == totalHand.get(0).hand.get(1).getId() ) {
       return true;
     } else {
       return false;

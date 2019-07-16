@@ -55,10 +55,11 @@ public class Cards {
     return id;
   }
 
+  
   public boolean equals(Cards other) {
-      if(this.id.equals(other.id)) {
-          return true;
-      }
-      return false;
+	  if(this.id.equals(other.id)) {
+		  return true;
+	  }
+	  return false;
   }
 }

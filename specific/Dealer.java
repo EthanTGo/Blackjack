@@ -4,114 +4,110 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Dealer {
-  private int score; // dealer's total card value
-  private ArrayList<Cards> dhand; //dealerhands
-  private Cards show;
-  private Cards hidden;
+	public Hand dhand; // dealerhands
+	private Cards show;
+	private Cards hidden;
 
-  public Dealer(){
-      score = 0;
-      dhand = new ArrayList<Cards>();
-    }
+	public Dealer() {
+		dhand = new Hand();
+	}
 
-  public Cards getCard(Deck input){
-    Random rand = new Random();
-    int random = rand.nextInt(input.sizeDeck());
-    //check deck find card
-    Cards a = input.getCard(random);
-    //deck removeCard
-    input.removeCard(random);
-    //get card
-    return a;
-    }
+	public Cards getCard(Deck input) {
+		Random rand = new Random();
+		int random = rand.nextInt(input.sizeDeck());
+		// check deck find card
+		Cards a = input.getCard(random);
+		// deck removeCard
+		input.removeCard(random);
+		// get card
+		return a;
+	}
 
-  public int getScore(){
-    return score;
-  }
+	public int getScore() {
+		return dhand.score;
+	}
+	
+	public void printintialdhand() {
+		System.out.println("One of the dealer's card is " + this.dhand.hand.get(0).getId());
+	}
 
-  public void printdhand() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("Dealer's cards has a hidden card and a ");
-    sb.append(show.id);
-    System.out.println(sb);
-  }
+	public void printdhand() { //prints first card - always run for player to know
+		System.out.print("The dealer's hand is: ");
+		dhand.printHand();
+	}
 
-  public void getdhand(Deck input){ //use to get dealer's inital hand (add 2 cards)
-    Random rand = new Random();
-    int random = rand.nextInt(input.sizeDeck());
-    Cards a = input.getCard(random);
-    input.removeCard(random);
-    show = a;
-    dhand.add(show); //The first card to be shown
-    int rand2 = rand.nextInt(input.sizeDeck());
-    Cards b = input.getCard(rand2);
-    input.removeCard(rand2);
-    hidden = b;
-    dhand.add(hidden); //the second card is hidden (as game)
-  }
+	public void getdhand(Deck input) { // use to get dealer's inital hand (add 2 cards)
+		Random rand = new Random();
+		int random = rand.nextInt(input.sizeDeck());
+		Cards a = input.getCard(random);
+		input.removeCard(random);
+		show = a;
+		dhand.add(show); // The first card to be shown
+		int rand2 = rand.nextInt(input.sizeDeck());
+		Cards b = input.getCard(rand2);
+		input.removeCard(rand2);
+		hidden = b;
+		dhand.add(hidden); // the second card is hidden (as game)
+	}
 
-  public void dstand(Players p,  Deck d) {
-      updatescore();
-    while(score < 17 && score < p.score) {
-      adddhand(d); // add to dealers hand
-      printallcards(); //show all current cards (reveal hidden cards)
-      updatescore(); //show score
-    }
-  }
+	public void dstand(int score_to_beat , Deck d) { //assuming score to beat is less than valid score
+		updatescore();
+		while (dhand.score < 17 && dhand.score < score_to_beat) {
+			adddhand(d); // add to dealers hand
+			printallcards(); // show all current cards (reveal hidden cards)
+			updatescore(); // show score
+		}
+	}
 
-  public void adddhand(Deck input){ //add one card
-    Random rand = new Random();
-    int random = rand.nextInt(input.sizeDeck());
-    Cards a = input.getCard(random);
-    input.removeCard(random);
-    dhand.add(a);
-  }
-  public void printallcards() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("Dealer's cards are ");
-    for(int i = 0; i < this.dhand.size(); i++) {
-      if(i == this.dhand.size()-1) {
-        sb.append(dhand.get(i).getId());
-      }else {
-       sb.append(dhand.get(i).getId() + " and ");
-      }
-  }
-    System.out.println(sb);
+	public void adddhand(Deck input) { // add one card
+		Random rand = new Random();
+		int random = rand.nextInt(input.sizeDeck());
+		Cards a = input.getCard(random);
+		input.removeCard(random);
+		dhand.add(a);
+	}
 
-  }
+	public void printallcards() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Dealer's cards are ");
+		for (int i = 0; i < this.dhand.hand.size(); i++) {
+			if (i == this.dhand.hand.size() - 1) {
+				sb.append(dhand.hand.get(i).getId());
+			} else {
+				sb.append(dhand.hand.get(i).getId() + " and ");
+			}
+		}
+		System.out.println(sb);
 
-  public void initalscore() {
-    score += show.getValue();
-    if(show.id == "Ace") {
-      score +=  10;
-    }
-    System.out.println("Dealer's score is " + score);
-  }
+	}
 
-  public void updatescore(){ //we need to consider the Ace case
-    int aceCounter = 0;
-    score = 0;
-    for(int i = 0; i < this.dhand.size(); i++) {
-          if(dhand.get(i).getId() == "Ace"){
-            aceCounter += 1;
-          }
-          score += dhand.get(i).getValue();
-      }
-    if(aceCounter > 0){ //Ace Condition
-        for(int j = 0; j < aceCounter; j++){
-          if(score > 11){
-            score += 1;
-          }
-          else{
-            score += 11;
-          }
-        }
-    }
-    System.out.println("Dealer's score is " + score);
-  }
+	public void initalscore() {
+		dhand.score();
+		System.out.println("Dealer's score is " + dhand.score);
+	}
 
-  public void dealerReset() {
-    score = 0;
-    dhand = new ArrayList<Cards>();
-  }
+	public void updatescore() { // we need to consider the Ace case
+		int aceCounter = 0;
+		dhand.score = 0;
+		for (int i = 0; i < this.dhand.hand.size(); i++) {
+			if (dhand.hand.get(i).getId() == "Ace") {
+				aceCounter += 1;
+			}
+			dhand.score += dhand.hand.get(i).getValue();
+		}
+		if (aceCounter > 0) { // Ace Condition
+			for (int j = 0; j < aceCounter; j++) {
+				if (dhand.score > 11) {
+					dhand.score += 1;
+				} else {
+					dhand.score += 11;
+				}
+			}
+		}
+		System.out.println("Dealer's score is " + dhand.score);
+	}
+
+	public void dealerReset() {
+		dhand = new Hand();
+	}
 }
