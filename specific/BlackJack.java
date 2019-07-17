@@ -44,7 +44,6 @@ public class BlackJack {
 			/////////////////////////////////////////////////////////////////
 			System.out.println(bet + " is a valid bet!");
 			dealer.getdhand(deck); // sets dealers dhand
-			dealer.initalscore();
 			dealer.printintialdhand(); //print intial hand
 
 			// set Player hand1
