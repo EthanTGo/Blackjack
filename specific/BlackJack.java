@@ -81,6 +81,8 @@ public class BlackJack {
 					checkWhoWin(this.player1.totalHand.get(i), dealer);
 				}
 			}
+			
+			this.player1.totalHand.clear(); //resets the hand
 				
 
 			if (this.player1.balance.getMoney() == 0) {
