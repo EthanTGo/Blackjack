@@ -9,8 +9,22 @@ Group Members:
 How to Compile:
 We compiled our code using the Eclispse compiler. Our main function is in the Exec.Class. Once Compiled properly, grader should expect to see a statement "Welcome! Let's play BlackJack!" and then a input statement asking for the player's name. 
 
- _ __ | | __ _ _   _(_)_ __   __ _    ___ __ _ _ __ __| |___ 
- | '_ \| |/ _` | | | | | '_ \ / _` |  / __/ _` | '__/ _` / __|
- | |_) | | (_| | |_| | | | | | (_| | | (_| (_| | | | (_| \__ \
- | .__/|_|\__,_|\__, |_|_| |_|\__, |  \___\__,_|_|  \__,_|___/
- |_|            |___/         |___/                           
+
+      _=====_                               _=====_
+     / _____ \                             / _____ \
+   +.-'_____'-.---------------------------.-'_____'-.+
+  /   |     |  '.        S O N Y        .'  |  _  |   \
+ / ___| /|\ |___ \                     / ___| /_\ |___ \
+/ |      |      | ;  __           _   ; | _         _ | ;
+| | <---   ---> | | |__|         |_:> | ||_|       (_)| |
+| |___   |   ___| ;SELECT       START ; |___       ___| ;
+|\    | \|/ |    /  _     ___      _   \    | (X) |    /|
+| \   |_____|  .','" "', |___|  ,'" "', '.  |_____|  .' |
+|  '-.______.-' /       \ANALOG/       \  '-._____.-'   |
+|               |       |------|       |                |
+|              /\       /      \       /\               |
+|             /  '.___.'        '.___.'  \              |
+|            /                            \             |
+ \          /                              \           /
+  \________/                                \_________/
+                    PS2 CONTROLLER
