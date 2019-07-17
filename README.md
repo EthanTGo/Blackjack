@@ -8,14 +8,3 @@ Group Members:
 
 How to Compile:
 We compiled our code using the Eclispse compiler. Our main function is in the Exec.Class. Once Compiled properly, grader should expect to see a statement "Welcome! Let's play BlackJack!" and then a input statement asking for the player's name. 
-_____  
-
-|2    |
-
-|  ^  |
-
-|     |
-
-|  ^  |
-
-|____Z|           
